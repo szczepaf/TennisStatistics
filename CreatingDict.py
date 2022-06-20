@@ -2,6 +2,9 @@ import urllib.request
 import urllib.parse
 import json
 
+
+#The database I used covered only the years 1973 - 2013, so I created manually the last few years
+
 y2014 = ["Novak Djokovic", "Roger Federer", "Rafael Nadal", "Stan Wawrinka", "Kei Nishikori", "Andy Murray", "Tomas Berdych", "Milos Raonic", "Marin Cilic", "David Ferrer"]
 y2015 = ["Novak Djokovic", "Andy Murray", "Roger Federer", "Stan Wawrinka", "Rafael Nadal", "Tomas Berdych", "David Ferrer", "Kei Nishikori", "Richard Gasquets", "Jo-Wilfried Tsonga"]
 y2016 = ["Andy Murray", "Novak Djokovic", "Milos Raonic", "Stan Warinka", "Kei Nishikori", "Marin Cilic", "Gael Monfils", "Dominic Thiem", "Rafael Nadal", "Tomas Berdych"]
@@ -32,6 +35,9 @@ def getNamesFromString(html):
 
 def getHeightByName(name):
     url = 'http://start.csail.mit.edu/justanswer.php'
+
+    #Answering machine from MIT might seem like a little funny choice for retrieving the heights,
+    #but no tennis database I found offered a clear overview of top players with their heights
 
     query = 'How tall is ' + name + '?'
     values = { 'query': query }
@@ -66,23 +72,23 @@ def getNames1973_2013():
     [names.append(x) for x in allNames if x not in names] 
     return names
 
-#Final function - call this in main
+#Final function for storing the dictionary with names:heights - call this in main
 def createDict():
     namesTwoAll = y2014 + y2015 + y2016 + y2017 + y2018 + y2019 + y2020 + y2021
     namesTwo = []
-    [namesTwo.append(x) for x in namesTwoAll if x not in namesTwo] 
+    [namesTwo.append(x) for x in namesTwoAll if x not in namesTwo] #filtered names
 
     heightDictionary = dict()
 
     namesOne = getNames1973_2013()
-    namesFinal = namesOne + namesTwo
+    namesFinal = namesOne + namesTwo #complete filtered list of names 
 
     for name in namesFinal:
 
         heightDictionary[name] = getHeightByName(name)
     
 
-    f = open("heights.json", "w")
+    f = open("heights.json", "w") #this will still have some mistakes, need to correct a few entries manually
     json.dump(heightDictionary, f)
     f.close()
 
