@@ -55,7 +55,7 @@ def getHeightByName(name):
         else:
             height = (pageString.split("Height: ")[1]).split(" ", 1)[0]
         if len(height) == 1:
-            #In case the height in in feet and not cm
+            #In case the height is in feet and not cm
             pattern = " m)"
             height = (pageString.split("in (")[1]).split(pattern)[0]
     except Exception:
