@@ -35,7 +35,7 @@ Stále však můžeme konstatovat, že tenisoví nestoři měli svým způsobem 
 
 #### Na závěr: Overfitting example
 
-Je zřejmé, že vztah mezi plynoucím časem a rostoucí výškou tenistů nebude odpovídat polynomu třetího stupně (protože právě graf kubické funkce lze v datech vidět), abych ale ilustroval problém overfittingu, kdy model ušijeme přesně na míru naměřeným datům, získáme dobré výsledky, ale zhoršíme tak jeho obecnou výpovědní hodnotu a schopnost přesně předpovídat další výsledky, zkusím data napasovat na kubickou polynomiální regresi.
+Kauzální vztah mezi plynoucím časem a rostoucí výškou tenistů nejspíše nebude odpovídat polynomu třetího stupně (přestože právě graf kubické funkce lze v datech vidět), abych ale ilustroval problém overfittingu, kdy model ušijeme přesně na míru naměřeným datům, získáme dobré výsledky, ale zhoršíme tak jeho obecnou výpovědní hodnotu a schopnost přesně předpovídat další výsledky, zkusím data napasovat na kubickou polynomiální regresi.
 Tímto způsobem dostaneme hodnotu R^2 0.7.
 
 ![polynomial](https://user-images.githubusercontent.com/83585883/175540752-35060b0c-a2c3-4fdf-b02a-154d5b7c9543.png)
