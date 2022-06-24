@@ -19,21 +19,23 @@ Následně jsem pomocí answering machine MIT (a patřičného parsování) zís
 Oba python programy (pro scrapování dat - CreatingDict.py - a pak pro spočítání regrese - plotting.py) jsou v (tomto) repozitáři https://github.com/szczepaf/TennisStatistics.
 
 #### Výsledky Regrese
-Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis.
-![FIGURE2](https://user-images.githubusercontent.com/83585883/175494227-4bc223e6-c306-4106-9da4-a2fdadd6d8a6.png)
+Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis:
+![scatter](https://user-images.githubusercontent.com/83585883/175540671-551afe70-4bd7-4aa4-8185-0e4db9be8605.png)
+
 
 Na první pohled je zřetelné, že opravdu dochází k růstu, a to ve dvou vlnách - první je v osmdesetých letech, pak nastal mírný pokles, od roku 2005 do 2020 však hodnoty narostly podstatně výše až k 1.9 metrům.  
-To koresponduje s dvacetiletou dominancí poměrně vysoké Big Three (Nadal, Federer, Djokovic, průměrná výška 1.86), případně Big Four, když počítáme Murrayho, a pak nástupem vysoké "Next Gen", mezi které patří Medvedev (1.98 m), Tsitsipas (1.93 m), Zverev (1.98 m) nebo Berrettini (1.96 m).
+Období růstu 2005 až do současnosti koresponduje s dvacetiletou dominancí poměrně vysoké Big Three (Nadal, Federer, Djokovic, průměrná výška 1.86), případně Big Four, když počítáme Murrayho (1.9 m), a pak nástupem vysoké "Next Gen", mezi které patří Medvedev (1.98 m), Tsitsipas (1.93 m), Zverev (1.98 m) nebo Berrettini (1.96 m). Jistý výkyv také jistě způsobili "Serveboti" Isner (2.08 m) a Raonic (1.96 m).
 
-![FIGURE1](https://user-images.githubusercontent.com/83585883/175494196-c23eb3d9-9a32-42ec-9179-5aa3e3f93674.png)
+
+![linear](https://user-images.githubusercontent.com/83585883/175540702-739ee5fd-ded9-477d-b895-34a1544e9fd4.png)
 Proložení přímkou nereflektuje propad v devadesátých letech (kdy na špičce byla spousta nižších hráči, např. Agassi, Chang, Hewitt, Muster).  
 Proto je R^2, coefficient of determination, cca 0,53, tedy nepříliš uspokojivé číslo.  
 Stále však můžeme konstatovat, že tenisoví nestoři měli svým způsobem pravdu, od 70. let se průměrná výška top 10 hráčů zvedla o zhruba 10 cm a rostoucí trend je zřetelný i v posledních několika letech.
 
 #### Na závěr: Overfitting example
 
-Je zřejmé, že vztah mezi plynoucím časem a rostoucí výškou tenistů nebude odpovídat polynomu třetího stupně (protože právě graf kubické funkce lze v datech vidět), abych ale ilustroval problém overfittingu, kdy model ušijeme přesně na míru naměřeným datům, získáme dobré výsledky, ale zhoršíme tak jeho obecnou výpovědní hodnotu, zkusím data napasovat na kubickou polynomiální regresi.
+Je zřejmé, že vztah mezi plynoucím časem a rostoucí výškou tenistů nebude odpovídat polynomu třetího stupně (protože právě graf kubické funkce lze v datech vidět), abych ale ilustroval problém overfittingu, kdy model ušijeme přesně na míru naměřeným datům, získáme dobré výsledky, ale zhoršíme tak jeho obecnou výpovědní hodnotu a schopnost přesně předpovídat další výsledky, zkusím data napasovat na kubickou polynomiální regresi.
 Tímto způsobem dostaneme hodnotu R^2 0.7.
 
-![FIGURE3](https://user-images.githubusercontent.com/83585883/175539395-8e6bcc1a-f287-42b2-899b-16c9e7e113c3.png)
+![polynomial](https://user-images.githubusercontent.com/83585883/175540752-35060b0c-a2c3-4fdf-b02a-154d5b7c9543.png)
 
