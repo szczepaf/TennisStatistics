@@ -3,7 +3,7 @@
 ### Statistická práce pro předmět Pravděpodobnost a Statistika 1, 2022, MFF UK, František Szczepanik
 
 #### Úvod
-Tenis se v posledních několika posledních dekádách velmi zřetelně profesionalizoval - stejně jako to ostatně proběhlo u celé řady dalších sportovních disciplín. Nedošlo jen k posunu v oblasti technologií (zejména výrobě raket), ale i v herním stylu.  
+Tenis se v posledních několika posledních dekádách velmi zřetelně profesionalizoval. Nedošlo jen k posunu v oblasti technologií (zejména výrobě raket), ale i v herním stylu.  
 
 Řada komentátorských nestorů a tenisových legend (někdy s lítostí) prosazuje názor, že dominantím způsobem hry se stal styl, kdy hráč zůstává na základní čáře a silnými údery diktuje podobu výměny (offensive baselining), narozdíl například od kreativnější hry u sítě či chytře umístěných krátkých drop-shotů. S tím se údajně  pojí rostoucí průměrná výška nejlepších hráčů a fenomén servebotingu - tedy typu vysokého hráče, který má extrémně silné podání, ale v ostatních aspektech jeho hra pokulhává a je spíše nudná a nekreativní.
 
@@ -12,11 +12,11 @@ V této práci tedy prozkoumám, zdali opravdu výška nejlepších hráčů ros
 #### Postup
 Do hashsetu jsem uložil všechny hráče, kteří se od roku 1973 objevili v top desítce rankingu, spočítal jsem jejich výšku a pak pro každý rok spočítal průměr daných top deseti hráčů.
 
-Žádná tenisová databáze však nenabízela uspořádaná data o top 10 hráčích na konci daného roku, žádná tenisová databáze také nenabízela uspořádaná data ve formátu hráč:jeho výška. Proto jsem data scrapoval z různých webů, například z http://www.tennis28.com/rankings/yearend_topten.html. Pro pár posledních let data chyběla a tak jsem musel databázi hráčů dokončit manuálně.
+Žádná tenisová databáze nenabízela uspořádaná data o top 10 hráčích na konci daného roku, žádná tenisová databáze také nenabízela uspořádaná data ve formátu hráč:jeho výška. Proto jsem data scrapoval z různých webů, například z http://www.tennis28.com/rankings/yearend_topten.html. Pro pár posledních let data chyběla a tak jsem musel databázi hráčů dokončit manuálně.
 
-Následně jsem pomocí answering machine MIT (a patřičného parsování) získal potřebné výšky hráčů, uložil je do slovníku (v podobě hráč:výška), opravil ručně několik chyb vzniklých odlišností html kódu pro stránku s odpovědí na výšku daného hráče (soubor heights_corrected.json), pro každý rok naparsoval z výše uvedeného webu top 10 hráčů, spočítal průměry a pomocí python knihoven numpy, sklearn a matplotlib provedl lineární regresi a její visualizaci. Další použitá python knihovna je urllib - pro získávání dat z webu.
+Následně jsem pomocí answering machine MIT (a patřičného parsování) získal potřebné výšky hráčů, uložil je do slovníku (v podobě hráč:výška), opravil ručně několik chyb vzniklých odlišností html kódu pro stránku s odpovědí na výšku daného hráče (soubor heights_corrected.json), pro každý rok naparsoval z výše uvedeného webu top 10 hráčů, spočítal průměry a pomocí python knihoven numpy, sklearn a matplotlib provedl lineární regresi a její vizualizaci. Další použitá python knihovna je urllib - pro získávání dat z webu.
 
-Oba python programy (pro scrapování dat - CreatingDict.py - a pak pro spočítání regrese - plotting.py) jsou v repozitáři https://github.com/szczepaf/TennisStatistics.
+Oba python programy (pro scrapování dat - CreatingDict.py, pro spočítání regrese - plotting.py) jsou v repozitáři https://github.com/szczepaf/TennisStatistics.
 
 #### Výsledky Regrese
 Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis:
@@ -36,7 +36,7 @@ Stále však můžeme konstatovat, že tenisoví nestoři měli svým způsobem 
 #### Na závěr: Overfitting example
 
 Kauzální vztah mezi plynoucím časem a rostoucí výškou tenistů nejspíše nebude odpovídat polynomu třetího stupně (přestože právě graf kubické funkce lze v datech vidět), abych ale ilustroval problém overfittingu, kdy model ušijeme přesně na míru naměřeným datům, získáme dobré výsledky, ale zhoršíme tak jeho obecnou výpovědní hodnotu a schopnost přesně předpovídat další výsledky, zkusím data napasovat na kubickou polynomiální regresi.
-Tímto způsobem dostaneme hodnotu R^2 0.7.
+Tímto způsobem dostaneme podstatně vyšší hodnotu R^2 0.7.
 
 ![polynomial](https://user-images.githubusercontent.com/83585883/175540752-35060b0c-a2c3-4fdf-b02a-154d5b7c9543.png)
 
