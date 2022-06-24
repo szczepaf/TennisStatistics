@@ -27,7 +27,8 @@ Na první pohled je zřetelné, že opravdu dochází k růstu, a to ve dvou vln
 Období růstu 2005 až do současnosti koresponduje s dvacetiletou dominancí poměrně vysoké Big Three (Nadal, Federer, Djokovic, průměrná výška 1.86), případně Big Four, když počítáme Murrayho (1.9 m), a pak nástupem vysoké "Next Gen", mezi které patří Medvedev (1.98 m), Tsitsipas (1.93 m), Zverev (1.98 m) nebo Berrettini (1.96 m). Jistý výkyv také jistě způsobili "Serveboti" Isner (2.08 m) a Raonic (1.96 m).
 
 
-![linear](https://user-images.githubusercontent.com/83585883/175540702-739ee5fd-ded9-477d-b895-34a1544e9fd4.png)
+![linear](https://user-images.githubusercontent.com/83585883/175540702-739ee5fd-ded9-477d-b895-34a1544e9fd4.png)  
+
 Proložení přímkou nereflektuje propad v devadesátých letech (kdy na špičce byla spousta nižších hráči, např. Agassi, Chang, Hewitt, Muster).  
 Proto je R^2, coefficient of determination, cca 0,53, tedy nepříliš uspokojivé číslo.  
 Stále však můžeme konstatovat, že tenisoví nestoři měli svým způsobem pravdu, od 70. let se průměrná výška top 10 hráčů zvedla o zhruba 10 cm a rostoucí trend je zřetelný i v posledních několika letech.
