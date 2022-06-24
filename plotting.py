@@ -1,9 +1,10 @@
 import json
-from os import linesep ## Delete this?
 import urllib.request
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy.lib import polynomial
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 
 y2014 = ["Novak Djokovic", "Roger Federer", "Rafael Nadal", "Stan Wawrinka", "Kei Nishikori", "Andy Murray", "Tomas Berdych", "Milos Raonic", "Marin Cilic", "David Ferrer"]
 y2015 = ["Novak Djokovic", "Andy Murray", "Roger Federer", "Stan Wawrinka", "Rafael Nadal", "Tomas Berdych", "David Ferrer", "Kei Nishikori", "Richard Gasquets", "Jo-Wilfried Tsonga"]
@@ -99,13 +100,16 @@ def main():
 
     
     listWithPlayerLists = createListWithPlayers(page)
+
     means = computeMeans(listWithPlayerLists, heightsDict)
     years = []
     for i in range(1973, 2022):
         years.append(i)
 
-    #the two lists, years and means, are our final datasets
-
+    
+    #the two lists, years and means, are our final datasets.
+    #yearsShort and meansShort are the same data, but just for the years 2005 to 2021
+    #LINEAR REGRESSION
     y = np.array(means)
     x = np.array(years).reshape((-1,1))
 
@@ -115,26 +119,35 @@ def main():
 
     plt.scatter(x, y, c = "blue")
     plt.plot(x, y_pred, c = "green")
-    plt.title("Growth of the average height of top 10 tennis players")
+    plt.title("Growth of the average height of top 10 tennis players - Linear Model")
     plt.xlabel("Year")
-    plt.ylabel("Heigth in cm")
+    plt.ylabel("Heigth in m")
     plt.show()
 
-
-    
     r_sq = model.score(x, y)
     print(f"coefficient of determination of our model is:  {r_sq}")
-    
 
-    
+    #POLYNOMIAL REGRESSION - overfitting
+    transformer = PolynomialFeatures(degree=3, include_bias=False)
+    transformer.fit(x)
+    x_ = transformer.transform(x)
+
+    polynomialModel = LinearRegression().fit(x_, y)
+    y_predP = polynomialModel.predict(x_)
+
+    plt.scatter(x, y, c = "blue")
+    plt.plot(x, y_predP, c = "green")
+    plt.title("Growth of the average height of top 10 tennis players - Polynomial model")
+    plt.xlabel("Year")
+    plt.ylabel("Heigth in m")
+    plt.show()
+
+    r_sqP = polynomialModel.score(x_, y)
+    print(f"coefficient of determination of our model is:  {r_sqP}")
 
 
 
-    
-    
 
-    
-    
 
 
 if __name__ == "__main__":
