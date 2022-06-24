@@ -16,7 +16,7 @@ Do hashsetu jsem uložil všechny hráče, kteří se od roku 1973 objevili v to
 
 Následně jsem pomocí answering machine MIT (a patřičného parsování) získal potřebné výšky hráčů, uložil je do slovníku (v podobě hráč:výška), opravil ručně několik chyb vzniklých odlišností html kódu pro stránku s odpovědí na výšku daného hráče (soubor heights_corrected.json), pro každý rok naparsoval z výše uvedeného webu top 10 hráčů, spočítal průměry a pomocí python knihoven numpy, sklearn a matplotlib provedl lineární regresi a její visualizaci. Další použitá python knihovna je urllib - pro získávání dat z webu.
 
-Oba python programy (pro scrapování dat - CreatingDict.py - a pak pro spočítání regrese - plotting.py) jsou v (tomto) repozitáři https://github.com/szczepaf/TennisStatistics.
+Oba python programy (pro scrapování dat - CreatingDict.py - a pak pro spočítání regrese - plotting.py) jsou v repozitáři https://github.com/szczepaf/TennisStatistics.
 
 #### Výsledky Regrese
 Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis:
