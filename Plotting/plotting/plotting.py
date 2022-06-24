@@ -1,7 +1,9 @@
 import json
-from os import linesep
+from os import linesep ## Delete this?
 import urllib.request
 import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.linear_model import LinearRegression
 
 y2014 = ["Novak Djokovic", "Roger Federer", "Rafael Nadal", "Stan Wawrinka", "Kei Nishikori", "Andy Murray", "Tomas Berdych", "Milos Raonic", "Marin Cilic", "David Ferrer"]
 y2015 = ["Novak Djokovic", "Andy Murray", "Roger Federer", "Stan Wawrinka", "Rafael Nadal", "Tomas Berdych", "David Ferrer", "Kei Nishikori", "Richard Gasquets", "Jo-Wilfried Tsonga"]
@@ -71,10 +73,7 @@ def computeMeans(metaList, dictionary):
     return means
 
 
-def main():
-    heightsDict = getDict()
-    page = getHtml("http://www.tennis28.com/rankings/yearend_topten.html")
-
+def createListWithPlayers(page):
     listWithPlayerLists = []
 
     for i in range(1973,2014):
@@ -91,22 +90,48 @@ def main():
     listWithPlayerLists.append(y2020)
     listWithPlayerLists.append(y2021)
 
-    means = computeMeans(listWithPlayerLists, heightsDict)
+    return listWithPlayerLists
+
+
+def main():
+    heightsDict = getDict()
+    page = getHtml("http://www.tennis28.com/rankings/yearend_topten.html")
 
     
-
-
+    listWithPlayerLists = createListWithPlayers(page)
+    means = computeMeans(listWithPlayerLists, heightsDict)
     years = []
     for i in range(1973, 2022):
         years.append(i)
 
+    #the two lists, years and means, are our final datasets
 
+    y = np.array(means)
+    x = np.array(years).reshape((-1,1))
 
-    plt.scatter(years, means, c = "blue")
+    model = LinearRegression()
+    model.fit(x, y)
+    y_pred = model.predict(x)
+
+    plt.scatter(x, y, c = "blue")
+    plt.plot(x, y_pred, c = "green")
+    plt.title("Growth of the average height of top 10 tennis players")
+    plt.xlabel("Year")
+    plt.ylabel("Heigth in cm")
     plt.show()
+
+
+    
+    r_sq = model.score(x, y)
+    print(f"coefficient of determination of our model is:  {r_sq}")
+    
 
     
 
+
+
+    
+    
 
     
     
