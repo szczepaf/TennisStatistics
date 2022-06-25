@@ -5,7 +5,7 @@
 #### Úvod
 Tenis se v posledních několika posledních dekádách velmi zřetelně profesionalizoval. Nedošlo jen k posunu v oblasti technologií (zejména výrobě raket), ale i v herním stylu.  
 
-Řada komentátorských nestorů a tenisových legend (někdy s lítostí) prosazuje názor, že dominantím způsobem hry se stal styl, kdy hráč zůstává na základní čáře a silnými údery diktuje podobu výměny (offensive baselining), narozdíl například od kreativnější hry u sítě či chytře umístěných krátkých drop-shotů. S tím se údajně  pojí rostoucí průměrná výška nejlepších hráčů a fenomén servebotingu - tedy typu vysokého hráče, který má extrémně silné podání, ale v ostatních aspektech jeho hra pokulhává a je spíše nudná a nekreativní.
+Řada komentátorských nestorů a tenisových legend (někdy s lítostí) prosazuje názor, že dominantím způsobem hry se stal styl, kdy hráč zůstává na základní čáře a silnými údery diktuje podobu výměny (offensive baselining), narozdíl například od kreativnější hry u sítě či chytře umístěných krátkých drop-shotů. S tím se údajně  pojí rostoucí průměrná výška nejlepších hráčů a fenomén servebotingu - tedy typu vysokého hráče, který má extrémně silné podání, ale v ostatních aspektech jeho hra pokulhává a je spíše nudná.
 
 V této práci tedy prozkoumám, zdali opravdu výška nejlepších hráčů roste. Pro roky 1973 - 2021 spočítám průměrnou výšku deseti nejlepších hráčů daného roku a lineární regresí zjistím, jestli tento průměr roste v čase.
 
@@ -23,17 +23,17 @@ Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis:
 ![scatter](https://user-images.githubusercontent.com/83585883/175540671-551afe70-4bd7-4aa4-8185-0e4db9be8605.png)
 
 
-Na první pohled je zřetelné, že opravdu dochází k růstu, a to ve dvou vlnách - první je v osmdesetých letech, pak nastal mírný pokles, od roku 2005 do 2020 však hodnoty narostly podstatně výše až k 1.9 metrům.  
-Období růstu 2005 až do současnosti koresponduje s dvacetiletou dominancí poměrně vysoké Big Three (Nadal, Federer, Djokovic, průměrná výška 1.86), případně Big Four, když počítáme Murrayho (1.9 m), a pak nástupem vysoké "Next Gen", mezi které patří Medvedev (1.98 m), Tsitsipas (1.93 m), Zverev (1.98 m) nebo Berrettini (1.96 m). Jistý výkyv také jistě způsobili "Serveboti" Isner (2.08 m) a Raonic (1.96 m).
+Na první pohled je zřetelné, že opravdu dochází k růstu, a to ve dvou vlnách - první je v osmdesetých letech, pak nastává pokles, od roku 2005 do 2020 však průměry rostou až k 1.9 metrům.  
+Období růstu 2005 až do současnosti koresponduje s dvacetiletou dominancí poměrně vysoké Big Three (Nadal, Federer, Djokovic, průměrná výška 1.86 m), případně Big Four, když počítáme Murrayho (1.9 m), a pak nástupem vysoké "Next Gen", mezi které patří Medvedev (1.98 m), Tsitsipas (1.93 m), Zverev (1.98 m) nebo Berrettini (1.96 m). Jistý výkyv také jistě způsobili "Serveboti" Isner (2.08 m) a Raonic (1.96 m).
 
 
 ![linear](https://user-images.githubusercontent.com/83585883/175540702-739ee5fd-ded9-477d-b895-34a1544e9fd4.png)  
 
-Proložení přímkou nereflektuje propad v devadesátých letech (kdy na špičce byla spousta nižších hráči, např. Agassi, Chang, Hewitt, Muster).  
-Proto je R^2, coefficient of determination, cca 0,53, tedy nepříliš uspokojivé číslo.  
+Proložení přímkou nereflektuje propad v devadesátých letech (kdy na špičce byla řada nižších hráčů, např. Agassi, Chang, Hewitt, Muster, průměrná výška 1.78 m).  
+Proto je R^2, coefficient of determination, 0,53, tedy nepříliš uspokojivé číslo.  
 Stále však můžeme konstatovat, že tenisoví nestoři měli svým způsobem pravdu, od 70. let se průměrná výška top 10 hráčů zvedla o zhruba 10 cm a rostoucí trend je zřetelný i v posledních několika letech.
 
-#### Na závěr: Overfitting example
+#### Cvičení na závěr: Overfitting example
 
 Kauzální vztah mezi plynoucím časem a rostoucí výškou tenistů nejspíše nebude odpovídat polynomu třetího stupně (přestože právě graf kubické funkce lze v datech vidět), abych ale ilustroval problém overfittingu, kdy model ušijeme přesně na míru naměřeným datům, získáme dobré výsledky, ale zhoršíme tak jeho obecnou výpovědní hodnotu a schopnost přesně předpovídat další výsledky, zkusím data napasovat na kubickou polynomiální regresi.
 Tímto způsobem dostaneme podstatně vyšší hodnotu R^2 0.7.
