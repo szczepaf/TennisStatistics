@@ -19,7 +19,8 @@ Následně jsem pomocí answering machine MIT (a patřičného parsování) zís
 Oba python programy (pro scrapování dat - CreatingDict.py, pro spočítání regrese - plotting.py) jsou v repozitáři https://github.com/szczepaf/TennisStatistics.
 
 #### Výsledky Regrese
-Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis:
+Takto vypadá ScatterPlot s roky na x-axis a průměrnými výškami na y-axis:  
+
 ![scatter](https://user-images.githubusercontent.com/83585883/175540671-551afe70-4bd7-4aa4-8185-0e4db9be8605.png)
 
 
